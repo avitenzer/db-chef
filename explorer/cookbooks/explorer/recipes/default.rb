@@ -1,0 +1,58 @@
+
+package 'sqlite3' do
+  action :install
+end
+
+package 'libsqlite3-dev' do
+  action :install
+end
+
+package 'python-dev' do
+  action :install
+end
+
+package 'python-pip' do
+  action :install
+end
+
+bash 'upgarde pip' do
+ 
+  code <<-EOH
+    sudo pip install --upgrade pip
+	sudo pip install pycrypto
+  EOH
+  
+end
+
+package 'unzip' do
+  action :install
+  only_if { File.exist?('/usr/bin/unzip') == false }
+end
+
+directory node['install']['directory'] do
+  action :create
+  recursive true
+  only_if { File.exist?("#{node['install']['directory']}") == false }
+end
+
+cookbook_file "#{node['install']['directory']}/#{node['software']['explorer']}" do
+  source "#{node['software']['explorer']}"
+  owner "root"
+  group "root"
+  mode 0755
+  action :create_if_missing
+end
+
+bash 'unzip_explorer' do
+  user "root"
+  code <<-EOH
+  unzip -d #{node['install']['directory']}/. #{node['install']['directory']}/#{node['software']['explorer']}
+  mv #{node["install"]["directory"]}/#{node["explorer"]["directory"]}-master #{node["install"]["directory"]}/#{node["explorer"]["directory"]}
+  rm -Rf #{node['install']['directory']}/#{node['software']['explorer']}
+  EOH
+  only_if { File.exist?("#{node['install']['directory']}/#{node['explorer']['directory']}") == false }
+end
+
+
+
+
