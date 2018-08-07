@@ -28,7 +28,7 @@ execute 'clean_up' do
   command "rm -Rf #{node["software"]["directory"]}multichain-1.0.5"
 end
 
-execute 'foo' do
+execute 'multichain_d' do
   command "multichaind #{node["blockchain"]["name"]}@#{node["blockchain"]["ip"]}:#{node["blockchain"]["port"]} -daemon"
 end
 
