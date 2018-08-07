@@ -53,6 +53,24 @@ bash 'unzip_explorer' do
   only_if { File.exist?("#{node['install']['directory']}/#{node['explorer']['directory']}") == false }
 end
 
+template "#{node["install"]["directory"]}/#{node["explorer"]["directory"]}/#{node['blockchain']['name']}.conf" do
+  source "chain.conf.erb"
+  mode "644"
+
+  variables(
+      :chain_name => node['blockchain']['name']
+  )
+end
+
+execute "delete_example_conf" do
+  user "root"
+  command "rm #{node["install"]["directory"]}/#{node["explorer"]["directory"]}/chain1.example.conf"
+end
+
+
+
+
+
 
 
 
