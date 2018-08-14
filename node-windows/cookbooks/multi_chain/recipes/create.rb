@@ -1,29 +1,25 @@
 powershell_script 'create_chain' do
   code <<-EOH
-    multichain-util create -datadir="#{node['app']['directory']}/#{node['data']['directory']}" #{node['blockchain']['name']}
+    multichain-util create -datadir=#{node['app']['directory']}#{node['data']['directory']} #{node['blockchain']['name']}
   EOH
 end
 
-#we can replace that and add the parameters to the command line
-=begin
-template "#{node["home"]["directory"]}/.multichain/#{node["blockchain"]["name"]}/params.dat" do
+#this can be replaced using command line parameters
+template "#{node['app']['directory']}#{node['data']['directory']}/#{node["blockchain"]["name"]}/params.dat" do
 
   source "params.dat.erb"
-  mode "644"
-  owner "root"
-  group "root"
   variables(
       :chain_name => node['blockchain']['name']
   )
   action :create_if_missing
 end
-=end
 
-bash 'initiate_new_chain' do
+
+powershell_script 'initiate_new_chain' do
   code <<-EOH
-    multichaind #{node["blockchain"]["name"]} -daemon
+    multichaind -datadir=#{node['app']['directory']}#{node['data']['directory']} #{node["blockchain"]["name"]} -daemon > #{node['app']['directory']}#{node['data']['directory']}/logs.txt
   EOH
 end
 
-#to connect to the chain in interactive mode run
-#multichain-cli chain-name
+#rpc connection to the chain - interactive mode will work in linux
+#multichain-cli <blockchainname> -datadir=c:/apps/datadir/  getinfo
