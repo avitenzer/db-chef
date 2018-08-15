@@ -1,3 +1,12 @@
+directory "#{node['app']['directory']}/#{node['data']['directory']}" do
+  owner "root"
+  group "root"
+  mode 0755
+  action :create
+  recursive true
+end
+
+
 cookbook_file "#{node['temp']['directory']}/#{node['software']['multichain']}" do
   source "#{node['software']['multichain']}"
   owner "root"
@@ -7,37 +16,20 @@ cookbook_file "#{node['temp']['directory']}/#{node['software']['multichain']}" d
 end
 
 execute 'extract_tar' do
-  command "tar xzvf #{node["temp"]["directory"]}/multichain-1.0.5.tar.gz -C #{node["temp"]["directory"]}"
-  
-  not_if { File.exists?("#{node["temp"]["directory"]}multichain-1.0.5") }
-end
+  command "tar --strip-components=1 -zxf #{node["temp"]["directory"]}/#{node['software']['multichain']} -C #{node['app']['directory']}/."
 
-execute 'move_multichaind' do
-  command "mv #{node["temp"]["directory"]}/multichain-1.0.5/multichaind /usr/local/bin"
-  not_if { File.exists?("/usr/local/bin/multichaind") }
-end
-
-execute 'move_multichain_cli' do
-  command "mv #{node["temp"]["directory"]}/multichain-1.0.5/multichain-cli /usr/local/bin"
-  not_if { File.exists?("/usr/local/bin/multichain-cli") }
-end
-
-execute 'move_multichain_util' do
-  command "mv #{node["temp"]["directory"]}/multichain-1.0.5/multichain-util /usr/local/bin"
-  not_if { File.exists?("/usr/local/bin/multichain-util") }
-end
-
-execute 'move_multichain_cold' do
-  command "mv #{node["temp"]["directory"]}/multichain-1.0.5/multichaind-cold /usr/local/bin"
-  not_if { File.exists?("/usr/local/bin/multichaind-cold") }
-end
-
-execute 'clean_up' do
-  command "rm -Rf #{node["temp"]["directory"]}/multichain-1.0.5"
+  not_if { File.exists?("#{node["temp"]["directory"]}#{node['software']['multichain']}") }
 end
 
 execute 'clean_up' do
   command "rm -Rf #{node["temp"]["directory"]}/#{node['software']['multichain']}"
+end
+
+bash 'add_app_to_path' do
+  code <<-EOH
+  PATH=$PATH:#{node['app']['directory']}
+  export PATH
+  EOH
 end
 
 

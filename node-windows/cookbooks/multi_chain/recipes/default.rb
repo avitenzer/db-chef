@@ -3,7 +3,6 @@
 directory "#{node['app']['directory']}" do
   action :create
   recursive true
-
 end
 
 
