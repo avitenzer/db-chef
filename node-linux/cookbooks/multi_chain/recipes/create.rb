@@ -1,4 +1,3 @@
-
 bash 'create_blockchain' do
   code <<-EOH
     /apps/multichain-util create -datadir=#{node['app']['directory']}#{node['data']['directory']} #{node['blockchain']['name']}

@@ -19,7 +19,7 @@
       "multichain": "multichain-1.0.6.tar.gz"
     },
     "blockchain": {
-      "name": "mytestchain1",
+      "name": "mytestchain",
       "ip": "172.28.128.1",
       "port": "2679"
     }
@@ -212,7 +212,7 @@
           ],
           "encapsulation": "Ethernet",
           "addresses": {
-            "08:00:27:17:A8:DA": {
+            "08:00:27:84:F9:14": {
               "family": "lladdr"
             },
             "192.168.1.118": {
@@ -222,12 +222,13 @@
               "broadcast": "192.168.1.255",
               "scope": "Global"
             },
-            "fe80::a00:27ff:fe17:a8da": {
+            "fe80::a00:27ff:fe84:f914": {
               "family": "inet6",
               "prefixlen": "64",
               "scope": "Link",
               "tags": [
-
+                "tentative",
+                "dadfailed"
               ]
             }
           },
@@ -247,9 +248,6 @@
               "proto": "kernel"
             }
           ],
-          "neighbour_inet6": {
-            "fe80::a2ab:1bff:fe5f:69a4": "a0:ab:1b:5f:69:a4"
-          },
           "link_speed": 1000,
           "duplex": "Full",
           "port": "Twisted Pair",
@@ -276,15 +274,15 @@
         "interfaces": {
           "lo": {
             "rx": {
-              "bytes": "1296",
-              "packets": "16",
+              "bytes": "0",
+              "packets": "0",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
             },
             "tx": {
-              "bytes": "1296",
-              "packets": "16",
+              "bytes": "0",
+              "packets": "0",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
@@ -294,16 +292,16 @@
           "eth0": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "1191086",
-              "packets": "16533",
+              "bytes": "486887",
+              "packets": "7164",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "71739189",
-              "packets": "55144",
+              "bytes": "50575048",
+              "packets": "36841",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -312,16 +310,16 @@
           "eth1": {
             "tx": {
               "queuelen": "1000",
-              "bytes": "2848",
-              "packets": "32",
+              "bytes": "258",
+              "packets": "3",
               "errors": "0",
               "drop": "0",
               "carrier": "0",
               "collisions": "0"
             },
             "rx": {
-              "bytes": "70728",
-              "packets": "1003",
+              "bytes": "2421",
+              "packets": "37",
               "errors": "0",
               "drop": "0",
               "overrun": "0"
@@ -332,12 +330,12 @@
     },
     "ipaddress": "10.0.2.15",
     "macaddress": "08:00:27:3D:3B:01",
-    "ip6address": "fe80::a00:27ff:fe17:a8da",
+    "ip6address": "fe80::a00:27ff:fe3d:3b01",
     "hostnamectl": {
       "static_hostname": "vagrant-ubuntu-trusty-64",
       "icon_name": "computer-vm",
       "chassis": "vm",
-      "boot_id": "3b617dc9d4a444a28b5a820c9eaa7052",
+      "boot_id": "60ed063202f044a590550b80a4c31597",
       "virtualization": "oracle",
       "operating_system": "Ubuntu 14.04.5 LTS",
       "kernel": "Linux 3.13.0-153-generic",
@@ -362,10 +360,6 @@
           "size": "43798",
           "refcount": "1",
           "version": "4.3.36_Ubuntu (interface 0x00010004)"
-        },
-        "dm_crypt": {
-          "size": "23177",
-          "refcount": "0"
         },
         "nfsd": {
           "size": "284396",
@@ -395,6 +389,10 @@
           "size": "63988",
           "refcount": "1"
         },
+        "dm_crypt": {
+          "size": "23177",
+          "refcount": "0"
+        },
         "joydev": {
           "size": "17381",
           "refcount": "0"
@@ -416,12 +414,12 @@
           "refcount": "2",
           "version": "4.3.36_Ubuntu"
         },
-        "serio_raw": {
-          "size": "13462",
-          "refcount": "0"
-        },
         "video": {
           "size": "19476",
+          "refcount": "0"
+        },
+        "serio_raw": {
+          "size": "13462",
           "refcount": "0"
         },
         "aesni_intel": {
@@ -452,14 +450,14 @@
           "size": "20359",
           "refcount": "3"
         },
-        "psmouse": {
-          "size": "110788",
-          "refcount": "0"
-        },
         "ahci": {
           "size": "34091",
           "refcount": "1",
           "version": "3.0"
+        },
+        "psmouse": {
+          "size": "110788",
+          "refcount": "0"
         },
         "e1000": {
           "size": "145227",
@@ -666,7 +664,7 @@
         "logical_block_size": "512"
       }
     },
-    "machine_id": "e5aa8602ccfe49d72e4384465b73d2ba",
+    "machine_id": "603f340a5d16c57ae6cfe6735b79948f",
     "memory": {
       "swap": {
         "cached": "0kB",
@@ -680,23 +678,23 @@
         "surplus": "0"
       },
       "total": "501600kB",
-      "free": "151552kB",
-      "buffers": "26944kB",
-      "cached": "124720kB",
-      "active": "216356kB",
-      "inactive": "67528kB",
-      "dirty": "64kB",
+      "free": "14268kB",
+      "buffers": "22660kB",
+      "cached": "290092kB",
+      "active": "208920kB",
+      "inactive": "208020kB",
+      "dirty": "124kB",
       "writeback": "0kB",
-      "anon_pages": "132252kB",
-      "mapped": "17604kB",
-      "slab": "51920kB",
-      "slab_reclaimable": "43244kB",
-      "slab_unreclaim": "8676kB",
-      "page_tables": "3036kB",
+      "anon_pages": "104256kB",
+      "mapped": "13020kB",
+      "slab": "56808kB",
+      "slab_reclaimable": "48092kB",
+      "slab_unreclaim": "8716kB",
+      "page_tables": "2860kB",
       "nfs_unstable": "0kB",
       "bounce": "0kB",
       "commit_limit": "250800kB",
-      "committed_as": "315448kB",
+      "committed_as": "172340kB",
       "vmalloc_total": "34359738367kB",
       "vmalloc_used": "19884kB",
       "vmalloc_chunk": "34359712760kB",
@@ -795,7 +793,7 @@
             "Product Name": "VirtualBox",
             "Version": "1.2",
             "Serial Number": "0",
-            "UUID": "C79CA94E-F297-4BE5-B813-E42B6C5B8624",
+            "UUID": "CF1C1289-8CF9-4B57-AF6D-E1B5AF4C37AB",
             "Wake-up Type": "Power Switch",
             "SKU Number": "Not Specified",
             "Family": "Virtual Machine"
@@ -805,7 +803,7 @@
         "product_name": "VirtualBox",
         "version": "1.2",
         "serial_number": "0",
-        "uuid": "C79CA94E-F297-4BE5-B813-E42B6C5B8624",
+        "uuid": "CF1C1289-8CF9-4B57-AF6D-E1B5AF4C37AB",
         "wake_up_type": "Power Switch",
         "sku_number": "Not Specified",
         "family": "Virtual Machine"
@@ -884,7 +882,7 @@
       }
     },
     "shard_seed": 6557652,
-    "ohai_time": 1534320876.0508904,
+    "ohai_time": 1534694708.3623223,
     "virtualbox": {
       "host": {
         "revision": "123759",
@@ -924,8 +922,8 @@
           "kb_available": "49796",
           "percent_used": "1%",
           "total_inodes": "62700",
-          "inodes_used": "329",
-          "inodes_available": "62371",
+          "inodes_used": "330",
+          "inodes_available": "62370",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -941,12 +939,12 @@
         },
         "/dev/sda1": {
           "kb_size": "41251136",
-          "kb_used": "1704396",
-          "kb_available": "37810828",
+          "kb_used": "1663400",
+          "kb_available": "37851824",
           "percent_used": "5%",
           "total_inodes": "2621440",
-          "inodes_used": "86074",
-          "inodes_available": "2535366",
+          "inodes_used": "85977",
+          "inodes_available": "2535463",
           "inodes_percent_used": "4%",
           "fs_type": "ext4",
           "mount_options": [
@@ -960,8 +958,8 @@
         },
         "none": {
           "kb_size": "976759804",
-          "kb_used": "26024924",
-          "kb_available": "950734880",
+          "kb_used": "26025404",
+          "kb_available": "950734400",
           "percent_used": "3%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -1094,8 +1092,8 @@
           "kb_available": "49796",
           "percent_used": "1%",
           "total_inodes": "62700",
-          "inodes_used": "329",
-          "inodes_available": "62371",
+          "inodes_used": "330",
+          "inodes_available": "62370",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -1111,12 +1109,12 @@
         },
         "/": {
           "kb_size": "41251136",
-          "kb_used": "1704396",
-          "kb_available": "37810828",
+          "kb_used": "1663400",
+          "kb_available": "37851824",
           "percent_used": "5%",
           "total_inodes": "2621440",
-          "inodes_used": "86074",
-          "inodes_available": "2535366",
+          "inodes_used": "85977",
+          "inodes_available": "2535463",
           "inodes_percent_used": "4%",
           "fs_type": "rootfs",
           "mount_options": [
@@ -1210,8 +1208,8 @@
         },
         "/vagrant": {
           "kb_size": "976759804",
-          "kb_used": "26024924",
-          "kb_available": "950734880",
+          "kb_used": "26025404",
+          "kb_available": "950734400",
           "percent_used": "3%",
           "total_inodes": "1000",
           "inodes_used": "0",
@@ -1351,8 +1349,8 @@
           "percent_used": "1%",
           "mount": "/run",
           "total_inodes": "62700",
-          "inodes_used": "329",
-          "inodes_available": "62371",
+          "inodes_used": "330",
+          "inodes_available": "62370",
           "inodes_percent_used": "1%",
           "fs_type": "tmpfs",
           "mount_options": [
@@ -1366,13 +1364,13 @@
         "/dev/sda1,/": {
           "device": "/dev/sda1",
           "kb_size": "41251136",
-          "kb_used": "1704396",
-          "kb_available": "37810828",
+          "kb_used": "1663400",
+          "kb_available": "37851824",
           "percent_used": "5%",
           "mount": "/",
           "total_inodes": "2621440",
-          "inodes_used": "86074",
-          "inodes_available": "2535366",
+          "inodes_used": "85977",
+          "inodes_available": "2535463",
           "inodes_percent_used": "4%",
           "fs_type": "ext4",
           "mount_options": [
@@ -1459,8 +1457,8 @@
         "none,/vagrant": {
           "device": "none",
           "kb_size": "976759804",
-          "kb_used": "26024924",
-          "kb_available": "950734880",
+          "kb_used": "26025404",
+          "kb_available": "950734400",
           "percent_used": "3%",
           "mount": "/vagrant",
           "total_inodes": "1000",
@@ -1580,17 +1578,17 @@
     },
     "keys": {
       "ssh": {
-        "host_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDuugv5hMi9KSSgcR+ijdyL0KgzOp2f4i6yHaAbUyK4gOfJNoab0JOwAHCB7nJjOe/J+75nktK4VJpMX5MT5ORfZctLBZXHQqHTeKoTgu4pQcFeNOctmTB5gz8910wUqF7Gzb4XGg1IL1u29AZfhrCrTttsb1IWczi9qP31hYxHAeXbja5hYHahXeqsfXgvbbGI32+nDXbUObhEnPdfT8keqcilxujwlomVmyxJHkSQ/p0D0ZNi4E3/JuaHaxRyGPoTFM+TG6CZlDkbtBGPVHrvKDyoV9XTJaF/v/SxhHgJHkQIbfFMZOIfilC7Obo98wIolnWRs+gnLyyNCb68Ft3f",
-        "host_dsa_public": "AAAAB3NzaC1kc3MAAACBAMCd5SsHqC1SRmxXiIntuMl6ksoW0KMhDU5xzpMDfroQesdB7FM6AJgRijqgLu0qbp4hmc6jnWtOisBXm2H4Nsezl6b89FP2c8h3u8gzRudFlI8nVJj11vbsTKskLg9bunelXkJ/io8JYi0F55LLTxHiPV2hIMfBT3rwE+i0S2OnAAAAFQDUfzYmQO1eoAy+HZBcFYEm+yX0LQAAAIA/+rQFNrDjreySHbF1Toetxr0FBakhPNHKHIpUyMS8IwZNuE2m87m3I22OwSCNdOeokhAAx+agOI4vUhQPGHR93L3q2uLIpOc0aEb86wUIC8yVOK8TX+sI7X4ukACOFVv/mmZu6TqODhzJWzMcBLU89T2vHlOzqHfmJGIPa/28nQAAAIADFGBX8fFjS05ISGZ5t54GmjuAmNGlmv65l3R3EoyVhIxwWHXlppgXGV2hfY8IJr48ls2dAHZcjhbCyx5tAsvL6qWuPm2YnAZDbGOJHUVd3wKlUdYEW1xwRBMb2uGVCg9JlZF7zid9X3J4lUAStL5IYsFxcba1iWceaH/CVjWA0A==",
-        "host_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNZ51ZZ4qkXtOjcM+rsy/H5AVo/KQfhV+mDemRurmTrDO280QCN0A6ouDu3QUXdyr1dxpkm9HWNvz1UarVPN/GA=",
+        "host_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQDNjvSwfexYS9+R5mxJdhOtovNT/cCUKBdEALYZi/uyVLBXUG6Pzv7xGNs6Czgpv/JhVrbnfmqAoOURcsCG9X+iC4cwMX7GkKwXXjke9js5erSu7/VDwSfRyibKMnx0vlpNonTGkRksS7C1cp+31unDnECmKnjksLPul8N26czJetO/IlMdjeCe+GT9os54XuVWZJymaVdKcuSNp4W693Trpj74zfpcZyFYf7QIu+PBQU39iNcv9Plb1udpf5GPdSBCM5XtG91v/5j0gVOp8NRGuENc0ir6+DRYyxJ9U2Ij68hiVFueVK5TzUulslA/cyGPpSY/n684UX7WP3nXUaot",
+        "host_dsa_public": "AAAAB3NzaC1kc3MAAACBAJ36SaRi9rWxy4VrQh4XqcRqOqjsjw/+UdUgvLPVHfZPqXuT4OfRvBEDr3Ize3ZDicvTRqZMSt8cddhAK9YESH37CPV4O084CJVnd53bbt2AvIcUb1boycRdBXnm8T0jWQgO02XRTQOvhgKrj6/wluCimimW+Ww4AfJf04a0PLozAAAAFQD7YcSNaSIyZa9y6tC/5IZezKIzyQAAAIBmIpbG773uweeVe2zYVN5AS+K0W9j/6iHtJxUbTqx9IF+nSkGdf0De0hZCbrJXcIIsMHO1mB6W3Hf2k1HS9oajhtAEBu+7bFB7hLCUTLFIDZvKNj7tisAHD6OkWwHmQb6fV2qlHeIXoXwtB01PWCsvTRmPEfTiJxer21Yoxy7GAAAAAIBCWvWMyT9W5RfZnmTtG8cbaHLXq7N1PbMQ4Tj9Xo2KpbYWlJZ/rXLdtIIiseyAh9k9dAKb4Fv5yCwJHKh/vPHbVzKQt9Rfp7Q9kHqonlwxv9tHPBZgR97XkzSHcsPp0lWfXLrS3jCBxuxs87WBiLBfcXn2PPYQzY+heL2TOOaFdg==",
+        "host_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBJNGGsbPVQP0YjZxdX0fWnAHpAS910TdOHeAU/cNEgY9rzW4fU4afHrgnWujTQrtsG+dxkbriUfdEql7AKLqy48=",
         "host_ecdsa_type": "ecdsa-sha2-nistp256",
-        "host_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIKiTaHTm/NjJ3ujto5k2wl9XVp8pqRt+V3oQH3UQJ6dE"
+        "host_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIF3b9NWY8NYehkhRo6eGoniZEzvgKnFqgM339bcHpkM/"
       }
     },
-    "uptime_seconds": 3670,
-    "uptime": "1 hours 01 minutes 10 seconds",
-    "idletime_seconds": 3394,
-    "idletime": "56 minutes 34 seconds",
+    "uptime_seconds": 204,
+    "uptime": "3 minutes 24 seconds",
+    "idletime_seconds": 101,
+    "idletime": "1 minutes 41 seconds",
     "etc": {
       "passwd": {
         "root": {
@@ -2197,7 +2195,7 @@
       "ULONG_MAX": 18446744073709551615,
       "USHRT_MAX": 65535,
       "WORD_BIT": 32,
-      "_AVPHYS_PAGES": 37581,
+      "_AVPHYS_PAGES": 3826,
       "_NPROCESSORS_CONF": 1,
       "_NPROCESSORS_ONLN": 1,
       "_PHYS_PAGES": 125400,
@@ -5090,7 +5088,7 @@
         "ohai_root": "/opt/chef/embedded/lib/ruby/gems/2.5.0/gems/ohai-14.3.0/lib/ohai"
       }
     },
-    "chef_guid": "fede9814-944c-4444-96fc-fef03601c7d3",
+    "chef_guid": "533a94b5-6cf4-4cfd-9ab8-936384dac0f8",
     "name": "vagrant-ubuntu-trusty-64",
     "chef_environment": "_default",
     "recipes": [
