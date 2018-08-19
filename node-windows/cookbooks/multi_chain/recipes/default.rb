@@ -17,7 +17,7 @@ powershell_script 'extract_file' do
   [System.Reflection.Assembly]::LoadWithPartialName("System.IO.Compression.FileSystem") | Out-Null
   [System.IO.Compression.ZipFile]::ExtractToDirectory('#{node['app']['directory']}/#{node['software']['multichain']}', '#{node['app']['directory']}')
   EOH
-  only_if { ::File.exists?("#{node['app']['directory']}/#{node['software']['multichain']}")}
+  not_if { ::File.exists?("#{node['app']['directory']}/#{node['data']['directory']}")}
 end
 
 powershell_script 'delete_zipfile' do
