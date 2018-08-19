@@ -16,9 +16,9 @@ end
 
 
 powershell_script 'initiate_new_chain' do
-  code <<-EOH
+code <<-EOH
     multichaind -datadir=#{node['app']['directory']}#{node['data']['directory']} #{node["blockchain"]["name"]} -daemon > #{node['app']['directory']}#{node['data']['directory']}/logs.txt
-  EOH
+EOH
 end
 
 #rpc connection to the chain - interactive mode will work in linux

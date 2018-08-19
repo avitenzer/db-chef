@@ -1,4 +1,4 @@
-directory "#{node['app']['directory']}/#{node['data']['directory']}" do
+directory "#{node['app']['directory']}#{node['data']['directory']}" do
   owner "root"
   group "root"
   mode 0755

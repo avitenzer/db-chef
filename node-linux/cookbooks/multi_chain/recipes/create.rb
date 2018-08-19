@@ -26,4 +26,4 @@ end
 
 
 #to connect to the chain in interactive mode run
-#sudo /apps/multichain-cli chain-name
+#sudo ./multichain-cli -datadir=/apps/datadir <chain-name>

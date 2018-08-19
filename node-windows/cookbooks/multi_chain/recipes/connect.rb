@@ -1,5 +1,12 @@
-powershell_script 'initiate_new_chain' do
-  code <<-EOH
-    multichaind -datadir=#{node['app']['directory']}#{node['data']['directory']} #{node["blockchain"]["name"]}@#{node["blockchain"]["ip"]}:#{node["blockchain"]["port"]} -daemon > #{node['app']['directory']}#{node['data']['directory']}/logs.txt
-  EOH
+template "#{node['app']['directory']}/start_node.bat" do
+
+  source "start_node_bat.erb"
+  variables(
+      :chain_name => node['blockchain']['name'],
+      :ip_address => node['blockchain']['ip'],
+      :port_number => node['blockchain']['port'],
+      :app_directory => node["app"]["directory"],
+      :data_directory => node["data"]["directory"]
+  )
+  action :create_if_missing
 end

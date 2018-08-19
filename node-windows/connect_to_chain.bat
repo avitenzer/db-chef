@@ -1,1 +1,1 @@
-sudo chef-solo -c solo.rb -j node_connect_to_chain.json
+chef-solo -c solo.rb -j node_connect_to_chain.json
