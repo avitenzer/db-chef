@@ -1,4 +1,8 @@
 
+execute "apt-get-update" do
+  command "apt-get update"
+end
+
 package 'sqlite3' do
   action :install
 end
@@ -16,11 +20,10 @@ package 'python-pip' do
 end
 
 bash 'upgarde pip' do
- 
   code <<-EOH
-    sudo pip install --upgrade pip
+  sudo pip install --upgrade pip
 	sudo pip install pycrypto
-  EOH
+EOH
   
 end
 
@@ -62,9 +65,17 @@ template "#{node["install"]["directory"]}/#{node["explorer"]["directory"]}/#{nod
   )
 end
 
-execute "delete_example_conf" do
-  user "root"
-  command "rm #{node["install"]["directory"]}/#{node["explorer"]["directory"]}/chain1.example.conf"
+template "#{node['install']['directory']}/#{node['explorer']['directory']}/#{node['software']['instructions']}" do
+  source "instructions.erb"
+  mode 0444
+  variables(
+      :chain_name => node['blockchain']['name']
+  )
+end
+
+
+execute "update rpcport" do
+  command "echo \"rpcport=2678\" >> /apps/datadir/#{node['blockchain']['name']}/multichain.conf"
 end
 
 

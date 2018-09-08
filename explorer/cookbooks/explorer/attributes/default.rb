@@ -1,4 +1,5 @@
 default["install"]["directory"] = "/apps"
 default["software"]["explorer"] = "multichain-explorer.zip"
+default["software"]["instructions"] = "instructions.txt"
 default["explorer"]["directory"] = "multichain-explorer"
-default['blockchain']['name'] = "chain1"
+default['blockchain']['name'] = "mytestchain"
